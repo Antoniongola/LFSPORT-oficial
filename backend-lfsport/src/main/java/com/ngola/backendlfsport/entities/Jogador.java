@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
@@ -14,4 +17,5 @@ public class Jogador extends FootballElement{
     private String dataNascimento;
     private int altura;
     private String nacionalidade;
+    private String trofeus;
 }

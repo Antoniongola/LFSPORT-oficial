@@ -14,6 +14,9 @@ import { SobreNosComponent } from './components/sobre-nos/sobre-nos.component';
 import { IntermediacoesComponent } from './components/intermediacoes/intermediacoes.component';
 import { JogadorComponent } from './components/jogador/jogador.component';
 import {NgOptimizedImage} from "@angular/common";
+import { CadastrarJogadorComponent } from './components/cadastrar-jogador/cadastrar-jogador.component';
+import { CadastrarTreinadorComponent } from './components/cadastrar-treinador/cadastrar-treinador.component';
+import { CadastrarIntermediacaoComponent } from './components/cadastrar-intermediacao/cadastrar-intermediacao.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import {NgOptimizedImage} from "@angular/common";
     ServicosComponent,
     SobreNosComponent,
     IntermediacoesComponent,
-    JogadorComponent
+    JogadorComponent,
+    CadastrarJogadorComponent,
+    CadastrarTreinadorComponent,
+    CadastrarIntermediacaoComponent
   ],
   imports: [
     BrowserModule,
