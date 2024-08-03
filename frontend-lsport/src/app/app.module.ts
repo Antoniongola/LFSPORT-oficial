@@ -17,6 +17,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { CadastrarJogadorComponent } from './components/cadastrar-jogador/cadastrar-jogador.component';
 import { CadastrarTreinadorComponent } from './components/cadastrar-treinador/cadastrar-treinador.component';
 import { CadastrarIntermediacaoComponent } from './components/cadastrar-intermediacao/cadastrar-intermediacao.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CadastrarIntermediacaoComponent } from './components/cadastrar-intermed
     JogadorComponent,
     CadastrarJogadorComponent,
     CadastrarTreinadorComponent,
-    CadastrarIntermediacaoComponent
+    CadastrarIntermediacaoComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
