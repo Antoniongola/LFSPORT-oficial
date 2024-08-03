@@ -19,8 +19,8 @@ public class UtilizadorService{
     }
 
     public ResponseEntity<Boolean> login(Utilizador user){
-        if(this.utilizadorRepository.findByUsername(user.getUsername()) != null){
-            Utilizador autentico = this.utilizadorRepository.findByUsername(user.getUsername());
+        if(this.utilizadorRepository.findByUsernameIgnoreCase(user.getUsername()) != null){
+            Utilizador autentico = this.utilizadorRepository.findByUsernameIgnoreCase(user.getUsername());
             if(this.securityConfigs.matches(user.getPassword(), autentico.getPassword())){
                 return ResponseEntity.ok(true);
             }
