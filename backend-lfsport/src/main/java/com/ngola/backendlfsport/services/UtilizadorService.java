@@ -5,13 +5,14 @@ import com.ngola.backendlfsport.repositories.UtilizadorRepository;
 import com.ngola.backendlfsport.security.SecurityConfigs;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class UtilizadorService{
     private final UtilizadorRepository utilizadorRepository;
-    private final SecurityConfigs securityConfigs;
+    private final BCryptPasswordEncoder securityConfigs = new BCryptPasswordEncoder();
 
     public ResponseEntity<Utilizador> updateUtilizador(Utilizador user, long id){
         return ResponseEntity.ok(this.utilizadorRepository.save(user));
@@ -20,7 +21,7 @@ public class UtilizadorService{
     public ResponseEntity<Boolean> login(Utilizador user){
         if(this.utilizadorRepository.findByUsername(user.getUsername()) != null){
             Utilizador autentico = this.utilizadorRepository.findByUsername(user.getUsername());
-            if(this.securityConfigs.encoder().matches(user.getPassword(), autentico.getPassword())){
+            if(this.securityConfigs.matches(user.getPassword(), autentico.getPassword())){
                 return ResponseEntity.ok(true);
             }
 

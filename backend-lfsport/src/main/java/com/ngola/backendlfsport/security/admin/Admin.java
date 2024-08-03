@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class Admin implements CommandLineRunner {
-    private SecurityConfigs securityConfigs;
+    private final BCryptPasswordEncoder securityConfigs = new BCryptPasswordEncoder();
     private final UtilizadorRepository utilizadorRepository;
 
     @Override
@@ -19,7 +19,7 @@ public class Admin implements CommandLineRunner {
         Utilizador user = new Utilizador();
         user.setId(1);
         user.setUsername("Lfsport");
-        user.setPassword(this.securityConfigs.encoder().encode("lf@12342023"));
+        user.setPassword(this.securityConfigs.encode("lf@12342023"));
 
         if(!this.utilizadorRepository.existsById(user.getId()))
             this.utilizadorRepository.save(user);
