@@ -13,21 +13,15 @@ export class UtilizadorService {
   constructor(private http: HttpClient) {}
 
   isLoggedIn():boolean{
-    if(this.getUsername()!='')
-      return true;
-
-    return false;
+    return this.getUsername() != '' && this.getUsername() != null;
   }
 
   saveUsername(username:string){
     localStorage.setItem('username', username);
   }
 
-  getUsername():string{
-    if(localStorage.getItem('username') != null)
-      return localStorage.getItem('username');
-
-    return '';
+  getUsername():string|null{
+    return localStorage.getItem('username');
   }
 
   logout(){

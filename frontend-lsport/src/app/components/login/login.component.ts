@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit{
 
   onSubmit() {
     alert('submit button was pressed!!')
+    this.userService.saveUsername("lfsport");
     if (this.loginForm.valid) {
       let user:Utilizador= new Utilizador(0,
         this.loginForm.get('username')?.value,

@@ -18,6 +18,11 @@ import { CadastrarJogadorComponent } from './components/cadastrar-jogador/cadast
 import { CadastrarTreinadorComponent } from './components/cadastrar-treinador/cadastrar-treinador.component';
 import { CadastrarIntermediacaoComponent } from './components/cadastrar-intermediacao/cadastrar-intermediacao.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import {HttpClientModule, provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
+import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -35,14 +40,18 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     CadastrarJogadorComponent,
     CadastrarTreinadorComponent,
     CadastrarIntermediacaoComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent,
+    PerfilComponent,
+    SideNavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgOptimizedImage
+    ReactiveFormsModule,
+    NgOptimizedImage,
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
