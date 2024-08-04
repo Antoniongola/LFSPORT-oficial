@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   styleUrl: './treinadores.component.css'
 })
 export class TreinadoresComponent implements OnInit{
-  treinadores:any[]=['', '', '', '', ''];
+  treinadores:any[]=['Guardiola', 'Mourinho', 'Klopp', 'Tuchel', 'Ten Haag'];
   constructor(private userService:UtilizadorService,
               private route:Router) {
   }

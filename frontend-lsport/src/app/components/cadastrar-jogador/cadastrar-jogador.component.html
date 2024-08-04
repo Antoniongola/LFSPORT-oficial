@@ -1,1 +1,77 @@
-<p>cadastrar-jogador works!</p>
+<!-- jogador-form.component.html -->
+<div class="container mt-5">
+  <h2>Formulário de Jogador</h2>
+  <form [formGroup]="jogadorForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" formControlName="nome" class="form-control">
+      <div *ngIf="jogadorForm.get('nome')?.invalid && (jogadorForm.get('nome')?.dirty || jogadorForm.get('nome')?.touched)" class="text-danger">
+        Nome é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="equipa">Equipa</label>
+      <input type="text" id="equipa" formControlName="equipa" class="form-control">
+      <div *ngIf="jogadorForm.get('equipa')?.invalid && (jogadorForm.get('equipa')?.dirty || jogadorForm.get('equipa')?.touched)" class="text-danger">
+        Equipa é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" formControlName="descricao" class="form-control"></textarea>
+    </div>
+    <div class="me-3">
+      <label for="jogadorImage">Imagem do jogador</label>
+      <br>
+      <input class="form-control form-control-sm" id="jogadorImage" type="file" (change)="onFileChange($event)" style="width: 35%; height: 15px;">
+    </div>
+    <div class="form-group">
+      <label for="posicao">Posição</label>
+      <select id="posicao" formControlName="posicao" class="form-control">
+        <option>Goleiro (GK)</option>
+        <option>Defesa Central (CB)</option>
+        <option>Lateral Esquerdo (LB)</option>
+        <option>Lateral Direito (RB)-</option>
+        <option>Volante (CDM)</option>
+        <option>Meio-Campista Central (CM)</option>
+        <option>Meio-Campista Ofensivo (CAM)</option>
+        <option>Meio-Campista Esquerdo (LM)</option>
+        <option>Meio-Campista Direito (RM)</option>
+      </select>
+      <!--<div *ngIf="jogadorForm.get('posicao')?.invalid && (jogadorForm.get('posicao')?.dirty || jogadorForm.get('posicao')?.touched)" class="text-danger">
+        Posição é obrigatório.
+      </div>-->
+    </div>
+    <div class="form-group">
+      <label for="equipaNacional">Equipa Nacional</label>
+      <input type="text" id="equipaNacional" formControlName="equipaNacional" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="pePreferido">Pé Preferido</label>
+      <select id="pePreferido" formControlName="pePreferido" class="form-control">
+        <option>Esquerdo</option>
+        <option>Direito</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="dataNascimento">Data de Nascimento</label>
+      <input type="date" id="dataNascimento" formControlName="dataNascimento" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="altura">Altura (cm)</label>
+      <input type="number" id="altura" formControlName="altura" class="form-control">
+      <div *ngIf="jogadorForm.get('altura')?.invalid && (jogadorForm.get('altura')?.dirty || jogadorForm.get('altura')?.touched)" class="text-danger">
+        Altura é obrigatória e deve ser um número positivo.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nacionalidade">Nacionalidade</label>
+      <input type="text" id="nacionalidade" formControlName="nacionalidade" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="trofeus">Troféus</label>
+      <textarea id="trofeus" formControlName="trofeus" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="jogadorForm.invalid">Enviar</button>
+  </form>
+</div>

@@ -1,1 +1,18 @@
-<p>dashboard-treinadores works!</p>
+<div class="container mt-5">
+  <div class="col">
+    <h2>Lista de treinadores</h2>
+    <button [routerLink]="['/'+'dashboard/new/treinador']" class="btn btn-secondary">Novo treinador</button>
+  </div>
+  <ul class="list-group">
+    <li *ngFor="let item of treinadores" class="list-group-item d-flex justify-content-between align-items-center">
+      {{item}}
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Ações
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" href="#" (click)="editItem(item)">Editar</a></li>
+        <li><a class="dropdown-item" href="#" (click)="deleteItem(item)">Apagar</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
   styleUrl: './servicos.component.css'
 })
 export class ServicosComponent implements OnInit{
+  items:any[]=['Planeamento Financeiero', "Gestão Familiar", "Assessoria Fiscal e Judicial", "Gestão Patrimonial"]
   constructor(private userService:UtilizadorService,
               private route:Router) {
   }

@@ -8,6 +8,8 @@ import {Router} from "@angular/router";
   styleUrl: './intermediacoes.component.css'
 })
 export class IntermediacoesComponent implements OnInit{
+  items:any[]=['intermediação', 'intermediação', 'intermediação', 'intermediação',
+    'intermediação', 'intermediação', 'intermediação'];
   constructor(private userService:UtilizadorService,
               private route:Router) {
   }
