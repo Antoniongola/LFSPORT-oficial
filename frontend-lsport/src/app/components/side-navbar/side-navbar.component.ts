@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Utilizador} from "../../entities/Utilizador";
+import {UtilizadorService} from "../../services/utilizador/utilizador.service";
 
 @Component({
   selector: 'app-side-navbar',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './side-navbar.component.css'
 })
 export class SideNavbarComponent {
+  constructor(private userService:UtilizadorService) {
+  }
 
+  logOut(){
+    this.userService.logout();
+  }
 }

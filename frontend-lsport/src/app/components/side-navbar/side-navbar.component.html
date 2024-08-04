@@ -2,17 +2,20 @@
 <nav id="sidebarMenu" class="collapse d-lg-block sidebar bg-light">
   <div class="position-sticky">
     <div class="list-group list-group-flush mx-3 mt-4">
-      <a href="#" class="list-group-item list-group-item-action py-2 ripple">
+      <a [routerLink]="['']" class="list-group-item list-group-item-action py-2 ripple">
         <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
       </a>
-      <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-        <i class="fas fa-chart-area fa-fw me-3"></i><span>Analytics</span>
+      <a [routerLink]="['intermediacao']" class="list-group-item list-group-item-action py-2 ripple">
+        <i class="fas fa-chart-area fa-fw me-3"></i><span>Intermediações</span>
       </a>
-      <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-        <i class="fas fa-lock fa-fw me-3"></i><span>Security</span>
+      <a [routerLink]="['jogador']" class="list-group-item list-group-item-action py-2 ripple">
+        <i class="fas fa-lock fa-fw me-3"></i><span>Jogadores</span>
       </a>
-      <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-        <i class="fas fa-cogs fa-fw me-3"></i><span>Settings</span>
+      <a [routerLink]="['treinador']" class="list-group-item list-group-item-action py-2 ripple">
+        <i class="fas fa-cogs fa-fw me-3"></i><span>Treinadores</span>
+      </a>
+      <a href="" (click)="logOut()" class="list-group-item list-group-item-action py-2 ripple">
+        <i class="fas fa-cogs fa-fw me-3"></i><span>Sair</span>
       </a>
     </div>
   </div>
@@ -23,7 +26,6 @@
     <i class="fas fa-bars"></i> Menu
   </button>
   <div class="content p-4">
-    <h1>Main Content</h1>
-    <p>This is the main content area.</p>
+    <router-outlet></router-outlet>
   </div>
 </div>

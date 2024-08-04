@@ -23,6 +23,9 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import {HttpClientModule, provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
 import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { DashboardJogadoresComponent } from './components/dashboard-jogadores/dashboard-jogadores.component';
+import { DashboardTreinadoresComponent } from './components/dashboard-treinadores/dashboard-treinadores.component';
+import { DashboardIntermediacoesComponent } from './components/dashboard-intermediacoes/dashboard-intermediacoes.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import {ReactiveFormsModule} from "@angular/forms";
     DashboardComponent,
     LoginComponent,
     PerfilComponent,
-    SideNavbarComponent
+    SideNavbarComponent,
+    DashboardJogadoresComponent,
+    DashboardTreinadoresComponent,
+    DashboardIntermediacoesComponent
   ],
   imports: [
     BrowserModule,

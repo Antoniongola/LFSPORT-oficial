@@ -1,0 +1,6 @@
+/* styles.css */
+.center-hr {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%; /* ajuste o valor conforme necessário */
+}

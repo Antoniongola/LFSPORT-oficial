@@ -13,13 +13,21 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {CadastrarJogadorComponent} from "./components/cadastrar-jogador/cadastrar-jogador.component";
 import {CadastrarIntermediacaoComponent} from "./components/cadastrar-intermediacao/cadastrar-intermediacao.component";
 import {CadastrarTreinadorComponent} from "./components/cadastrar-treinador/cadastrar-treinador.component";
+import {DashboardJogadoresComponent} from "./components/dashboard-jogadores/dashboard-jogadores.component";
+import {
+  DashboardIntermediacoesComponent
+} from "./components/dashboard-intermediacoes/dashboard-intermediacoes.component";
+import {DashboardTreinadoresComponent} from "./components/dashboard-treinadores/dashboard-treinadores.component";
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'dashboard', component:DashboardComponent, children:[
-      {path:'jogador', component:CadastrarJogadorComponent},
-      {path:':intermediacao', component:CadastrarIntermediacaoComponent},
-      {path:'treinador', component:CadastrarTreinadorComponent}
+      {path:'jogador', component:DashboardJogadoresComponent},
+      {path:'new/jogador', component:CadastrarJogadorComponent},
+      {path:'intermediacao', component:DashboardIntermediacoesComponent},
+      {path:'new/intermediacao', component:CadastrarIntermediacaoComponent},
+      {path:'treinador', component:DashboardTreinadoresComponent},
+      {path:'new/treinador', component:CadastrarTreinadorComponent}
     ]
   },
   {path:'jogadores', component:JogadoresComponent, children:[
