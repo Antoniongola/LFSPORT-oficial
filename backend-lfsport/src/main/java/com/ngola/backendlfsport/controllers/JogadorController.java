@@ -33,13 +33,13 @@ public class JogadorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Jogador> updateJogador(@RequestBody Jogador jogador, @PathVariable long id){
-        return this.jogadorService.updateJogador(jogador, id);
+    public ResponseEntity<Jogador> updateJogador(@RequestBody Jogador jogador, @PathVariable String id){
+        return this.jogadorService.updateJogador(jogador, Long.parseLong(id));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteJogador(long id){
-        this.jogadorService.deleteJogador(id);
+    public void deleteJogador(@PathVariable String id){
+        this.jogadorService.deleteJogador(Long.parseLong(id));
     }
 
 }

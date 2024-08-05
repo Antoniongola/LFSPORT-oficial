@@ -12,6 +12,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
@@ -43,19 +44,19 @@ public class SecurityConfigs implements WebMvcConfigurer {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(Customizer.withDefaults())
-                .sessionManagement(session -> session.
-                        sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                //.csrf(Customizer.withDefaults())
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/api/utilizador/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/authenticate*").permitAll()
+                        //.requestMatchers(HttpMethod.POST, "/api/auth/authenticate*").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/**").permitAll()
                         //.requestMatchers(HttpMethod.PUT,"/api/**").permitAll()
                         //.requestMatchers(HttpMethod.DELETE,"/api/**").permitAll()
                         .anyRequest().permitAll()
-                )
-                .httpBasic(Customizer.withDefaults())
-                .oauth2ResourceServer(conf->conf.jwt(Customizer.withDefaults()));
+                );
+                //.httpBasic(Customizer.withDefaults())
+                //.oauth2ResourceServer(conf->conf.jwt(Customizer.withDefaults()));
                 //.formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/lf"));
 
         return http.build();

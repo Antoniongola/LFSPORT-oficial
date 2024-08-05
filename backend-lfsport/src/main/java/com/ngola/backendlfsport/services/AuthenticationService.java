@@ -12,5 +12,4 @@ public class AuthenticationService {
     public String authenticate(Authentication authentication){
         return this.service.generateToken(authentication);
     }
-
 }
