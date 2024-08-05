@@ -17,6 +17,15 @@ import {NgOptimizedImage} from "@angular/common";
 import { CadastrarJogadorComponent } from './components/cadastrar-jogador/cadastrar-jogador.component';
 import { CadastrarTreinadorComponent } from './components/cadastrar-treinador/cadastrar-treinador.component';
 import { CadastrarIntermediacaoComponent } from './components/cadastrar-intermediacao/cadastrar-intermediacao.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import {HttpClientModule, provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
+import { SideNavbarComponent } from './components/side-navbar/side-navbar.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { DashboardJogadoresComponent } from './components/dashboard-jogadores/dashboard-jogadores.component';
+import { DashboardTreinadoresComponent } from './components/dashboard-treinadores/dashboard-treinadores.component';
+import { DashboardIntermediacoesComponent } from './components/dashboard-intermediacoes/dashboard-intermediacoes.component';
 
 @NgModule({
   declarations: [
@@ -33,14 +42,22 @@ import { CadastrarIntermediacaoComponent } from './components/cadastrar-intermed
     JogadorComponent,
     CadastrarJogadorComponent,
     CadastrarTreinadorComponent,
-    CadastrarIntermediacaoComponent
+    CadastrarIntermediacaoComponent,
+    DashboardComponent,
+    LoginComponent,
+    PerfilComponent,
+    SideNavbarComponent,
+    DashboardJogadoresComponent,
+    DashboardTreinadoresComponent,
+    DashboardIntermediacoesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgOptimizedImage
+    ReactiveFormsModule,
+    NgOptimizedImage,
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

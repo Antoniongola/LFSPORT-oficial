@@ -15,24 +15,27 @@ import java.util.List;
 public class JogadorService {
     private final JogadorRepository jogadorRepository;
 
-    public ResponseEntity<Jogador> newJogador(Jogador jogador) {
-        return ResponseEntity.ok(jogadorRepository.save(jogador));
+    public ResponseEntity<Jogador> newJogador(Jogador jogador){
+        return ResponseEntity.ok(this.jogadorRepository.save(jogador));
     }
 
-    public ResponseEntity<Jogador> updateJogador(Jogador jogador) {
-        return ResponseEntity.ok(jogadorRepository.save(jogador));
+    public ResponseEntity<Jogador> getJogadorById(long id){
+        return ResponseEntity.ok(this.jogadorRepository.findById(id).orElseThrow());
     }
 
-    public void deleteJogadorById(long jogador) {
-        jogadorRepository.deleteById(jogador);
+    public ResponseEntity<List<Jogador>> getAllJogador(){
+        return ResponseEntity.ok(this.jogadorRepository.findAll());
     }
 
-    public ResponseEntity<List<Jogador>> findAllJogador() {
-        return ResponseEntity.ok(jogadorRepository.findAll());
+    public ResponseEntity<Jogador> updateJogador(Jogador jogador, long id){
+        if(this.jogadorRepository.existsById(id)){
+            return ResponseEntity.ok(this.jogadorRepository.save(jogador));
+        }
+
+        return ResponseEntity.status(401).body(null);
     }
 
-    public ResponseEntity<Jogador> findJogadorById(Long id) {
-        return ResponseEntity.ok(jogadorRepository.findById(id).orElse(null));
+    public void deleteJogador(long id){
+        this.jogadorRepository.deleteById(id);
     }
-
 }

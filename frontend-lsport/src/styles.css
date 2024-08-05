@@ -10,6 +10,24 @@ a{
   text-decoration: none;
 }
 
-a:hover{
+.verde-claro{
+  background-color: #49D237;
+}
 
+.verde-escuro{
+  background-color: #34A625;
+}
+
+.center-hr {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%; /* ajuste o valor conforme necessário */
+}
+
+.form-group{
+  width: 65vh;
+}
+
+.list-group-item{
+  width: 100vh;
 }

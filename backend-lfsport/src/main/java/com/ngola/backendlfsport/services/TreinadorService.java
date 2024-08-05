@@ -15,24 +15,29 @@ import java.util.List;
 public class TreinadorService {
     private final TreinadorRepository treinadorRepository;
 
-    public ResponseEntity<Treinador> newTreinador(Treinador treinador) {
-        return ResponseEntity.ok(treinadorRepository.save(treinador));
+    public ResponseEntity<Treinador> newTreinador(Treinador treinador){
+        return ResponseEntity.ok(this.treinadorRepository.save(treinador));
     }
 
-    public ResponseEntity<Treinador> updateTreinador(Treinador treinador) {
-        return ResponseEntity.ok(treinadorRepository.save(treinador));
+    public ResponseEntity<Treinador> getTreinador(long id){
+        return ResponseEntity.ok(this.treinadorRepository.findById(id).orElseThrow());
     }
 
-    public void deleteTreinador(long id) {
-        treinadorRepository.deleteById(id);
+    public ResponseEntity<List<Treinador>> getAllTreinador(){
+        return ResponseEntity.ok(this.treinadorRepository.findAll());
     }
 
-    public ResponseEntity<Treinador> getTreinador(long id) {
-        return ResponseEntity.ok(treinadorRepository.findById(id).orElse(null));
+    public ResponseEntity<Treinador> updateTreinador(Treinador treinador, long id){
+        if(this.treinadorRepository.existsById(id)){
+            return ResponseEntity.ok(this.treinadorRepository.save(treinador));
+        }
+
+        return ResponseEntity.status(401).body(null);
     }
 
-    public ResponseEntity<List<Treinador>> getAllTreinador() {
-        return ResponseEntity.ok(treinadorRepository.findAll());
+    public void deleteTreinador(long id){
+        this.treinadorRepository.deleteById(id);
     }
+
 
 }

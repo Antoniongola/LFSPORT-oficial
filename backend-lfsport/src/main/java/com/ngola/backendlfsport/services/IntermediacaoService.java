@@ -15,24 +15,31 @@ import java.util.List;
 public class IntermediacaoService {
     private final IntermediacaoRepository intermediacaoRepository;
 
-    public ResponseEntity<Intermediacao> newIntermediacao(Intermediacao intermediacao) {
-        return ResponseEntity.ok(intermediacaoRepository.save(intermediacao));
+    public ResponseEntity<Intermediacao> newIntermediacao(Intermediacao intermediacao){
+        return ResponseEntity.ok(this.intermediacaoRepository.save(intermediacao));
     }
 
-    public ResponseEntity<Intermediacao> updateIntermediacao(Intermediacao intermediacao) {
-        return ResponseEntity.ok(intermediacaoRepository.save(intermediacao));
+    public ResponseEntity<Intermediacao> getIntermediacao(long id){
+        return ResponseEntity.ok(this.intermediacaoRepository.findById(id).orElseThrow());
     }
 
-    public void deleteIntermediacao(long intermediacao) {
-        intermediacaoRepository.deleteById(intermediacao);
+    public ResponseEntity<List<Intermediacao>> getAllIntermediacao(){
+        return ResponseEntity.ok(this.intermediacaoRepository.findAll());
     }
 
-    public ResponseEntity<Intermediacao> getIntermediacao(long intermediacao) {
-        return ResponseEntity.ok(intermediacaoRepository.findById(intermediacao).get());
+    public ResponseEntity<List<Intermediacao>> getPlayerIntermediacoes(String nome){
+        return ResponseEntity.ok(this.intermediacaoRepository.findAllByJogadorTransferidoEqualsIgnoreCase(nome));
     }
 
-    public ResponseEntity<List<Intermediacao>> getAllIntermediacoes() {
-        return ResponseEntity.ok(intermediacaoRepository.findAll());
+    public ResponseEntity<Intermediacao> updateIntermediacao(Intermediacao intermediacao, long id){
+        if(this.intermediacaoRepository.existsById(id)){
+            return ResponseEntity.ok(this.intermediacaoRepository.save(intermediacao));
+        }
+
+        return ResponseEntity.status(401).body(null);
     }
 
+    public void deleteIntermediacao(long id){
+        this.intermediacaoRepository.deleteById(id);
+    }
 }

@@ -1,1 +1,30 @@
-<p>cadastrar-treinador works!</p>
+<!-- jogador-form.component.html -->
+<div class="container mt-5">
+  <h2>Formulário de Jogador</h2>
+  <form [formGroup]="treinadorForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" formControlName="nome" class="form-control">
+      <div *ngIf="treinadorForm.get('nome')?.invalid && (treinadorForm.get('nome')?.dirty || treinadorForm.get('nome')?.touched)" class="text-danger">
+        Nome é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="equipa">Equipa</label>
+      <input type="text" id="equipa" formControlName="equipa" class="form-control">
+      <div *ngIf="treinadorForm.get('equipa')?.invalid && (treinadorForm.get('equipa')?.dirty || treinadorForm.get('equipa')?.touched)" class="text-danger">
+        Equipa é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" formControlName="descricao" class="form-control"></textarea>
+    </div>
+    <div class="me-3">
+      <label for="treinadorImage">Imagem do treinador</label>
+      <br>
+      <input class="form-control form-control-sm" id="treinadorImage" type="file" (change)="onFileChange($event)" style="width: 35%; height: 15px;">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="treinadorForm.invalid">Enviar</button>
+  </form>
+</div>

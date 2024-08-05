@@ -1,0 +1,31 @@
+<!-- app.component.html -->
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar bg-light">
+  <div class="position-sticky">
+    <div class="list-group list-group-flush mx-3 mt-4">
+      <a [routerLink]="['']" class="list-group-item list-group-item-action py-2 ripple">
+        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
+      </a>
+      <a [routerLink]="['intermediacao']" class="list-group-item list-group-item-action py-2 ripple">
+        <i class="fas fa-chart-area fa-fw me-3"></i><span>Intermediações</span>
+      </a>
+      <a [routerLink]="['jogador']" class="list-group-item list-group-item-action py-2 ripple">
+        <i class="fas fa-lock fa-fw me-3"></i><span>Jogadores</span>
+      </a>
+      <a [routerLink]="['treinador']" class="list-group-item list-group-item-action py-2 ripple">
+        <i class="fas fa-cogs fa-fw me-3"></i><span>Treinadores</span>
+      </a>
+      <a href="" (click)="logOut()" class="list-group-item list-group-item-action py-2 ripple">
+        <i class="fas fa-cogs fa-fw me-3"></i><span>Sair</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div id="main-content" class="container-fluid">
+  <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i> Menu
+  </button>
+  <div class="content p-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
