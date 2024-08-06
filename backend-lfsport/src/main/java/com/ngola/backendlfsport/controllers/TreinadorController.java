@@ -38,7 +38,7 @@ public class TreinadorController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTreinador(@PathVariable String id){
+    public void deleteTreinador(@PathVariable String id) throws IOException {
         this.treinadorService.deleteTreinador(Long.parseLong(id));
     }
 }

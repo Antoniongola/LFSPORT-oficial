@@ -63,7 +63,9 @@ public class TreinadorService {
         return ResponseEntity.status(401).body(null);
     }
 
-    public void deleteTreinador(long id){
+    public void deleteTreinador(long id) throws IOException {
+        Treinador treinador = this.treinadorRepository.findById(id).get();
+        this.fm.deleteFile(treinador.getPhotoPath());
         this.treinadorRepository.deleteById(id);
     }
 

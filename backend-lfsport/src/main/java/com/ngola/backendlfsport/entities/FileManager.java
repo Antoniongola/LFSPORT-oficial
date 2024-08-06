@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Component
 public class FileManager {
@@ -27,7 +28,15 @@ public class FileManager {
         file.transferTo(filePath.toFile());
     }
 
-    public void deleteFile(String filename) {
+    public void deleteFile(String filename) throws IOException {
+        Path uploadPath = Paths.get(System.getProperty("user.dir"), imagens);
+        Path filePath = uploadPath.resolve(filename);
 
+        if (Files.exists(filePath)) {
+            Files.delete(filePath);
+            System.out.println("File deleted: " + filePath.toAbsolutePath());
+        } else {
+            System.out.println("File not found: " + filePath.toAbsolutePath());
+        }
     }
 }

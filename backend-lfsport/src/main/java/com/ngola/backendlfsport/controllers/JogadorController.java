@@ -40,7 +40,7 @@ public class JogadorController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteJogador(@PathVariable String id){
+    public void deleteJogador(@PathVariable String id) throws IOException {
         this.jogadorService.deleteJogador(Long.parseLong(id));
     }
 

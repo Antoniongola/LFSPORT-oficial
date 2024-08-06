@@ -64,7 +64,9 @@ public class IntermediacaoService {
         return ResponseEntity.status(401).body(null);
     }
 
-    public void deleteIntermediacao(long id){
+    public void deleteIntermediacao(long id) throws IOException {
+        Intermediacao intermediacao = this.intermediacaoRepository.findById(id).get();
+        this.fm.deleteFile(intermediacao.getPhotoPath());
         this.intermediacaoRepository.deleteById(id);
     }
 }

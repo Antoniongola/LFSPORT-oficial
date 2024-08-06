@@ -52,7 +52,7 @@ public class IntermediacaoController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteIntermediacao(@PathVariable String id){
+    public void deleteIntermediacao(@PathVariable String id) throws IOException {
         this.intermediacaoService.deleteIntermediacao(Long.parseLong(id));
     }
 }

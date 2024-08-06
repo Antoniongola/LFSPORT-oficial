@@ -1,7 +1,9 @@
 package com.ngola.backendlfsport.services;
 
 import com.ngola.backendlfsport.entities.FileManager;
+import com.ngola.backendlfsport.entities.Intermediacao;
 import com.ngola.backendlfsport.entities.Jogador;
+import com.ngola.backendlfsport.repositories.IntermediacaoRepository;
 import com.ngola.backendlfsport.repositories.JogadorRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,6 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class JogadorService {
     private final JogadorRepository jogadorRepository;
+    private final IntermediacaoRepository intermediacaoRepository;
     private final FileManager fm;
     private LocalDateTime tempo = LocalDateTime.now();
 
@@ -57,9 +61,11 @@ public class JogadorService {
         return ResponseEntity.status(401).body(null);
     }
 
-    public void deleteJogador(long id){
+    public void deleteJogador(long id) throws IOException {
         Jogador jogador = this.jogadorRepository.findById(id).orElseThrow();
+        List<Intermediacao> intermediacoes = this.intermediacaoRepository.findAllByJogadorTransferidoEqualsIgnoreCase(jogador.getNome());
         this.fm.deleteFile(jogador.getPhotoPath());
+        this.intermediacaoRepository.deleteAll(intermediacoes);
         this.jogadorRepository.deleteById(id);
     }
 }
