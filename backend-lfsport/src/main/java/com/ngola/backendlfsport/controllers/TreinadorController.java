@@ -5,7 +5,9 @@ import com.ngola.backendlfsport.services.TreinadorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -16,8 +18,8 @@ public class TreinadorController {
     private final TreinadorService treinadorService;
 
     @PostMapping
-    public ResponseEntity<Treinador> newTreinador(@RequestBody Treinador treinador){
-        return this.treinadorService.newTreinador(treinador);
+    public ResponseEntity<Treinador> newTreinador(@RequestPart Treinador treinador, @RequestPart MultipartFile image) throws IOException {
+        return this.treinadorService.newTreinador(treinador, image);
     }
 
     @GetMapping("/{id}")
@@ -31,8 +33,8 @@ public class TreinadorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Treinador> updateTreinador(@PathVariable String id, @RequestBody Treinador treinador){
-        return this.treinadorService.updateTreinador(treinador, Long.parseLong(id));
+    public ResponseEntity<Treinador> updateTreinador(@PathVariable String id, @RequestPart Treinador treinador, @RequestPart MultipartFile image) throws IOException {
+        return this.treinadorService.updateTreinador(treinador, Long.parseLong(id), image);
     }
 
     @DeleteMapping("/{id}")

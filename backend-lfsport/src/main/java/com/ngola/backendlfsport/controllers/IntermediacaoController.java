@@ -7,7 +7,9 @@ import com.ngola.backendlfsport.services.JogadorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -19,8 +21,8 @@ public class IntermediacaoController {
     private final JogadorService jogadorService;
 
     @PostMapping
-    public ResponseEntity<Intermediacao> newIntermediacao(@RequestBody Intermediacao intermediacao){
-        return this.intermediacaoService.newIntermediacao(intermediacao);
+    public ResponseEntity<Intermediacao> newIntermediacao(@RequestPart Intermediacao intermediacao, @RequestPart MultipartFile image) throws IOException {
+        return this.intermediacaoService.newIntermediacao(intermediacao, image);
     }
 
     @GetMapping("/{id}")
@@ -43,8 +45,10 @@ public class IntermediacaoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Intermediacao> updateIntermediacao(@RequestBody Intermediacao intermediacao, @PathVariable String id){
-        return this.intermediacaoService.updateIntermediacao(intermediacao, Long.parseLong(id));
+    public ResponseEntity<Intermediacao> updateIntermediacao(@RequestPart Intermediacao intermediacao,
+                                                             @PathVariable String id,
+                                                             @RequestPart MultipartFile image) throws IOException {
+        return this.intermediacaoService.updateIntermediacao(intermediacao, Long.parseLong(id), image);
     }
 
     @DeleteMapping("/{id}")

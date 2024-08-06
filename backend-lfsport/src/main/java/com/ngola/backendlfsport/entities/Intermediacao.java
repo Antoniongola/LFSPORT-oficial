@@ -16,4 +16,5 @@ public class Intermediacao {
     private String equipaAntiga;
     private String equipaNova;
     private long anoIntermediacao;
+    private String photoPath;
 }

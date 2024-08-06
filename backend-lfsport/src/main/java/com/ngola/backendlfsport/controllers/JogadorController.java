@@ -7,7 +7,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -18,13 +20,13 @@ public class JogadorController {
     private final JogadorService jogadorService;
 
     @PostMapping
-    public ResponseEntity<Jogador> newJogador(@RequestBody Jogador jogador){
-        return this.jogadorService.newJogador(jogador);
+    public ResponseEntity<Jogador> newJogador(@RequestPart Jogador jogador, @RequestPart MultipartFile image) throws IOException {
+        return this.jogadorService.newJogador(jogador, image);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Jogador> getJogador(@PathVariable long id){
-        return this.jogadorService.getJogadorById(id);
+    public ResponseEntity<Jogador> getJogador(@PathVariable String id){
+        return this.jogadorService.getJogadorById(Long.parseLong(id));
     }
 
     @GetMapping
@@ -33,8 +35,8 @@ public class JogadorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Jogador> updateJogador(@RequestBody Jogador jogador, @PathVariable String id){
-        return this.jogadorService.updateJogador(jogador, Long.parseLong(id));
+    public ResponseEntity<Jogador> updateJogador(@RequestPart Jogador jogador, @PathVariable String id, @RequestPart MultipartFile image) throws IOException {
+        return this.jogadorService.updateJogador(jogador, Long.parseLong(id), image);
     }
 
     @DeleteMapping("/{id}")
