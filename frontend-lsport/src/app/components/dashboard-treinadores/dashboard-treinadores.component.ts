@@ -23,6 +23,8 @@ export class DashboardTreinadoresComponent implements OnInit{
   }
 
   deleteItem(item:Treinador){
-    this.treinadorService.deleteTreinador(item.id);
+    this.treinadorService.deleteTreinador(item.id).subscribe(response=>{
+      alert('TREINADOR APAGADO COM SUCESSO!')
+    });
   }
 }

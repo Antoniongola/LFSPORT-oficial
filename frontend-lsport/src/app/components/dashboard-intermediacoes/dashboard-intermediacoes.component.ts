@@ -20,6 +20,8 @@ export class DashboardIntermediacoesComponent implements OnInit{
   }
 
   deleteItem(id:any){
-    this.intermediacaoService.deleteIntermediacao(id);
+    this.intermediacaoService.deleteIntermediacao(id).subscribe(response=>{
+      alert('INTERMEDIAÇÃO APAGADA COM SUCESSO!')
+    });
   }
 }
