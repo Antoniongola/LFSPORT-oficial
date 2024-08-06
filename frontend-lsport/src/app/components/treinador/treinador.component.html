@@ -1,0 +1,21 @@
+<!-- app.component.html -->
+<title>Treinadores</title>
+<div class="container mt-5">
+  <h2 class="text-center">Treinadores</h2>
+  <hr class="center-hr">
+  <div class="row">
+    <div class="col-lg-4 text-center p-2" *ngFor="let treinador of treinadores">
+      <div class="card">
+        <div class="card-img imagemCircular">
+          <img [src]="img">
+        </div>
+        <div class="card-body">
+          <div class="card-header">{{treinador.nome.split(" ").at(0)}} {{treinador.nome.split(" ").at(treinador.nome.split(" ").length-1)}}</div>
+          <div>{{treinador.equipa}}</div>
+          <div><a [routerLink]="[treinador.id]">Ver mais</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
