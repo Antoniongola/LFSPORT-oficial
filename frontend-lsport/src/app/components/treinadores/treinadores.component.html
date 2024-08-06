@@ -1,13 +1,1 @@
-<!-- app.component.html -->
-<title>Treinadores</title>
-<div class="container mt-5">
-  <h2 class="text-center">Treinadores</h2>
-
-  <div class="row mt-5">
-    <div class="col-lg-4 text-center p-2" *ngFor="let item of treinadores">
-      <img [src]="imgSrcs[item.id]" alt="{{item.nome}}" class="img-fluid">
-      <h3>{{ item.nome }}</h3>
-    </div>
-  </div>
-</div>
-
+<router-outlet></router-outlet>

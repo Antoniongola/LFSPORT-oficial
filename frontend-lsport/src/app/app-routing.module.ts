@@ -18,6 +18,9 @@ import {
   DashboardIntermediacoesComponent
 } from "./components/dashboard-intermediacoes/dashboard-intermediacoes.component";
 import {DashboardTreinadoresComponent} from "./components/dashboard-treinadores/dashboard-treinadores.component";
+import {Treinador} from "./entities/Treinador";
+import {TreinadorComponent} from "./components/treinador/treinador.component";
+import {TreinadorDetalhadoComponent} from "./components/treinador-detalhado/treinador-detalhado.component";
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -39,8 +42,11 @@ const routes: Routes = [
   {path:'lf', component:LoginComponent},
   {path:'servicos', component:ServicosComponent},
   {path:'sobre', component:SobreNosComponent},
-  {path:'treinadores', component:TreinadoresComponent}
-
+  {path:'treinadores', component:TreinadoresComponent, children:[
+      {path:'', component:TreinadorComponent},
+      {path:':treinadorId', component:TreinadorDetalhadoComponent}
+    ]
+  }
 ];
 
 @NgModule({

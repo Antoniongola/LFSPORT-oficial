@@ -27,6 +27,7 @@ export class DashboardJogadoresComponent implements OnInit{
   deleteItem(item:Jogador){
     this.jogadorService.deleteJogador(item.id).subscribe(response=>{
       alert('O jogador '+item.nome+' e todas intermediações do jogador foram removidas com sucesso');
+      window.location.reload();
     });
   }
 }

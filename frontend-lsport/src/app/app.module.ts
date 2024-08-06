@@ -26,6 +26,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { DashboardJogadoresComponent } from './components/dashboard-jogadores/dashboard-jogadores.component';
 import { DashboardTreinadoresComponent } from './components/dashboard-treinadores/dashboard-treinadores.component';
 import { DashboardIntermediacoesComponent } from './components/dashboard-intermediacoes/dashboard-intermediacoes.component';
+import { TreinadorDetalhadoComponent } from './components/treinador-detalhado/treinador-detalhado.component';
+import { TreinadorComponent } from './components/treinador/treinador.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { DashboardIntermediacoesComponent } from './components/dashboard-interme
     SideNavbarComponent,
     DashboardJogadoresComponent,
     DashboardTreinadoresComponent,
-    DashboardIntermediacoesComponent
+    DashboardIntermediacoesComponent,
+    TreinadorDetalhadoComponent,
+    TreinadorComponent
   ],
   imports: [
     BrowserModule,

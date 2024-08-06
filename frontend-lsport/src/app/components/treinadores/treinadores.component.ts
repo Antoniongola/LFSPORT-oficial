@@ -32,8 +32,8 @@ export class TreinadoresComponent implements OnInit{
         this.mediaService.getImage(treinador.photoPath).subscribe(response=>{
           const url = URL.createObjectURL(response);
           this.imgSrcs[treinador.id] = this.sanitizer.bypassSecurityTrustUrl(url);
-        })
-      })
+        });
+      });
     });
   }
 }

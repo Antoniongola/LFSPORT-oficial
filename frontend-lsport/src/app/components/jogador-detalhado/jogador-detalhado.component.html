@@ -1,1 +1,22 @@
-<p>jogador-detalhado works!</p>
+<div class="container mt-5">
+  <h2 class="text-center">O jogador</h2>
+  <hr class="center-hr">
+  <div class="row mt-5">
+    <div class="col justify-content-center align-items-center">
+      <img [src]="img" class="img-fluid justify-content-center align-items-center">
+    </div>
+    <div class="col">
+      <p>Nome: <b>{{jogador.nome}}</b></p>
+      <p>Equipa: <b>{{jogador.equipa}}</b></p>
+      <p>Posição: <b>{{jogador.posicao}}</b></p>
+      <p>Data de nascimento: <b>{{jogador.dataNascimento}}</b></p>
+      <p>Descrição: <b>{{jogador.descricao}}</b></p>
+      <p>Altura: <b>{{jogador.altura/100}}m</b></p>
+      <p>Pé preferido: <b>{{jogador.pePreferido}}</b></p>
+      <p>Nacionalidade: <b>{{jogador.nacionalidade}}</b></p>
+      <p>Equipa Nacional: <b>{{jogador.equipaNacional}}</b></p>
+      <p>Troféus: <b>{{jogador.trofeus}}</b></p>
+      <p></p>
+    </div>
+  </div>
+</div>

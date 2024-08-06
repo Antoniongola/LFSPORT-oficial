@@ -1,16 +1,17 @@
-<div class="container">
+<div class="container mt-5">
   <h2 class="text-center">Jogadores</h2>
+  <hr class="center-hr">
   <div class="row">
     <div class="col-lg-4 text-center p-2" *ngFor="let jogador of jogadores">
       <div class="card">
-        <div class="card-img imagemJogador">
+        <div class="card-img imagemCircular">
           <img [src]="imgSrcs[jogador.id]">
         </div>
         <div class="card-body">
           <div class="card-header">{{jogador.nome.split(" ").at(0)}} {{jogador.nome.split(" ").at(jogador.nome.split(" ").length-1)}}</div>
           <div>{{jogador.equipa}}</div>
           <div>{{jogador.posicao}}</div>
-          <div><a [routerLink]="[id]">Ver mais</a></div>
+          <div><a [routerLink]="[jogador.id]">Ver mais</a></div>
         </div>
       </div>
     </div>

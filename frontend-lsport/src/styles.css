@@ -5,13 +5,18 @@
   padding: 0;
 }
 
-a{
+footer a{
   text-decoration: none;
   text-underline: none;
   color: black;
 }
 
-a:hover{
+nav a:hover{
+  background-color: #34A625;
+  border-radius: 5px;
+}
+
+footer a:hover{
   background-color: #34A625;
   border-radius: 5px;
 }
@@ -36,4 +41,14 @@ a:hover{
 
 .list-group-item{
   width: 100vh;
+}
+
+.imagemCircular{
+  img{
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+  }
+
+
 }
