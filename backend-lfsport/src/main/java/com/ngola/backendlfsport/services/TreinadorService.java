@@ -21,20 +21,16 @@ import java.util.List;
 public class TreinadorService {
     private final TreinadorRepository treinadorRepository;
     private final FileManager fm;
-    /*
-    @CurrentTimestamp
-    private LocalDateTime tempo;
-    */
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private LocalDateTime tempo = LocalDateTime.now();
 
     public ResponseEntity<Treinador> newTreinador(Treinador treinador, MultipartFile image) throws IOException {
         this.treinadorRepository.save(treinador);
-        String instante = timestamp.getYear()+"-"+ timestamp.getMonth()+"-"+ timestamp.getDayOfMonth();
-        instante+="-"+timestamp.getHour()+"-"+timestamp.getMinute()+"-"+timestamp.getSecond();
+        String instante =tempo.getDayOfMonth()+"-"+tempo.getMonth()+"-"+tempo.getYear();
+        instante+="-"+tempo.getHour()+"h-"+tempo.getMinute()+"m-"+tempo.getSecond()+"s";
         String nome = "treinador_"+treinador.getId()+"_"+instante+"_"+image.getOriginalFilename();
         this.fm.saveFile(image, nome);
         treinador.setPhotoPath(nome);
-
+        this.treinadorRepository.save(treinador);
         return ResponseEntity.ok(treinador);
     }
 
@@ -48,8 +44,8 @@ public class TreinadorService {
 
     public ResponseEntity<Treinador> updateTreinador(Treinador treinador, long id, MultipartFile image) throws IOException {
         if(!image.isEmpty()){
-            String instante = timestamp.getYear()+"-"+ timestamp.getMonthValue()+"-"+ timestamp.getDayOfMonth();
-            instante+="-"+timestamp.getHour()+"-"+timestamp.getMinute()+"-"+timestamp.getSecond();
+            String instante =tempo.getDayOfMonth()+"-"+tempo.getMonth()+"-"+tempo.getYear();
+            instante+="-"+tempo.getHour()+"h-"+tempo.getMinute()+"m-"+tempo.getSecond()+"s";
             String nome = "treinador_"+treinador.getId()+"_"+instante+"_"+image.getOriginalFilename();
             this.fm.deleteFile(treinador.getPhotoPath());
             this.fm.saveFile(image, nome);

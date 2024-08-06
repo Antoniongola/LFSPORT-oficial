@@ -1,9 +1,8 @@
 package com.ngola.backendlfsport.entities;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,9 +31,14 @@ public class FileManager {
         Path uploadPath = Paths.get(System.getProperty("user.dir"), imagens);
         Path filePath = uploadPath.resolve(filename);
 
-        if (Files.exists(filePath)) {
+        System.out.println("Upload Path: " + uploadPath.toAbsolutePath());
+        System.out.println("File Path: " + filePath.toAbsolutePath());
+
+        if (Files.exists(filePath) && Files.isRegularFile(filePath)) {
             Files.delete(filePath);
             System.out.println("File deleted: " + filePath.toAbsolutePath());
+        } else if (Files.exists(filePath) && Files.isDirectory(filePath)) {
+            System.out.println("The path is a directory, not a file: " + filePath.toAbsolutePath());
         } else {
             System.out.println("File not found: " + filePath.toAbsolutePath());
         }

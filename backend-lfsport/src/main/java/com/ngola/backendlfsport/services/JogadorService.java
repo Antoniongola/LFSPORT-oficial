@@ -29,11 +29,12 @@ public class JogadorService {
 
     public ResponseEntity<Jogador> newJogador(Jogador jogador, MultipartFile image) throws IOException {
         this.jogadorRepository.save(jogador);
-        String instante = tempo.getYear()+"-"+ tempo.getMonth()+"-"+ tempo.getDayOfMonth();
-        instante+="-"+tempo.getHour()+"-"+tempo.getMinute()+"-"+tempo.getSecond();
+        String instante =tempo.getDayOfMonth()+"-"+tempo.getMonth()+"-"+tempo.getYear();
+        instante+="-"+tempo.getHour()+"h-"+tempo.getMinute()+"m-"+tempo.getSecond()+"s";
         String nome = "jogador_"+jogador.getId()+"_"+instante+"_"+image.getOriginalFilename();
         this.fm.saveFile(image, nome);
         jogador.setPhotoPath(nome);
+        this.jogadorRepository.save(jogador);
         return ResponseEntity.ok(jogador);
     }
 
@@ -47,8 +48,9 @@ public class JogadorService {
 
     public ResponseEntity<Jogador> updateJogador(Jogador jogador, long id, MultipartFile image) throws IOException {
         if(!image.isEmpty()){
-            String instante = tempo.getYear()+"-"+ tempo.getMonth()+"-"+ tempo.getDayOfMonth();
-            instante+="-"+tempo.getHour()+"-"+tempo.getMinute()+"-"+tempo.getSecond();
+            tempo = LocalDateTime.now();
+            String instante =tempo.getDayOfMonth()+"-"+tempo.getMonth()+"-"+tempo.getYear();
+            instante+="-"+tempo.getHour()+"h-"+tempo.getMinute()+"m-"+tempo.getSecond()+"s";
             String nome = "jogador_"+jogador.getId()+"_"+instante+"_"+image.getOriginalFilename();
             this.fm.deleteFile(jogador.getPhotoPath());
             this.fm.saveFile(image, nome);
@@ -62,10 +64,15 @@ public class JogadorService {
     }
 
     public void deleteJogador(long id) throws IOException {
+        tempo = LocalDateTime.now();
         Jogador jogador = this.jogadorRepository.findById(id).orElseThrow();
         List<Intermediacao> intermediacoes = this.intermediacaoRepository.findAllByJogadorTransferidoEqualsIgnoreCase(jogador.getNome());
         this.fm.deleteFile(jogador.getPhotoPath());
-        this.intermediacaoRepository.deleteAll(intermediacoes);
+        for(Intermediacao intermediacao : intermediacoes){
+            this.fm.deleteFile(intermediacao.getPhotoPath());
+            this.intermediacaoRepository.deleteById(intermediacao.getId());
+        }
+
         this.jogadorRepository.deleteById(id);
     }
 }

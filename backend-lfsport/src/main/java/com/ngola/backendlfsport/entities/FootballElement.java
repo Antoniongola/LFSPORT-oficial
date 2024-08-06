@@ -1,9 +1,7 @@
 package com.ngola.backendlfsport.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.websocket.Encoder;
 import lombok.Data;
 
 @Entity
@@ -14,6 +12,8 @@ public class FootballElement {
     protected long id;
     protected String nome;
     protected String equipa;
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     protected String descricao;
     protected String photoPath;
 }

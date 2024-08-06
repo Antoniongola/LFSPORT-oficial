@@ -1,5 +1,6 @@
 package com.ngola.backendlfsport.security.admin;
 
+import com.ngola.backendlfsport.entities.FileManager;
 import com.ngola.backendlfsport.entities.Utilizador;
 import com.ngola.backendlfsport.repositories.UtilizadorRepository;
 import com.ngola.backendlfsport.security.SecurityConfigs;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class Admin implements CommandLineRunner {
     private final BCryptPasswordEncoder securityConfigs = new BCryptPasswordEncoder();
     private final UtilizadorRepository utilizadorRepository;
+    private final FileManager fileManager;
 
     @Override
     public void run(String... args) throws Exception {
@@ -23,5 +25,6 @@ public class Admin implements CommandLineRunner {
 
         if(!this.utilizadorRepository.existsById(user.getId()))
             this.utilizadorRepository.save(user);
+
     }
 }
