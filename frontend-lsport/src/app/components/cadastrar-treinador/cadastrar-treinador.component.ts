@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {TreinadorService} from "../../services/treinador/treinador.service";
+import {Treinador} from "../../entities/Treinador";
 
 @Component({
   selector: 'app-cadastrar-treinador',
@@ -10,7 +12,8 @@ export class CadastrarTreinadorComponent implements OnInit{
   treinadorForm!: FormGroup;
   treinadorImage!:File;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private treinadorService:TreinadorService) {
 
   }
 
@@ -33,7 +36,18 @@ export class CadastrarTreinadorComponent implements OnInit{
 
   onSubmit() {
     if (this.treinadorForm.valid) {
-      console.log('Form Submitted!', this.treinadorForm.value);
+      let treinador:Treinador= new Treinador(0,
+        this.treinadorForm.get('nome')?.value,
+        this.treinadorForm.get('equipa')?.value,
+        this.treinadorForm.get('descricao')?.value,
+        this.treinadorForm.get('photoPath')?.value);
+
+      this.treinadorService.newTreinador(treinador, this.treinadorImage).subscribe(response=>{
+        alert('TREINADOR CADASTRADO COM SUCESSO!');
+        window.location.reload();
+      }, error=>{
+        alert('NÃO FOI POSSÍVEL CADASTRAR O TREINADOR');
+      });
     }
   }
 }

@@ -1,4 +1,5 @@
 <!-- jogador-form.component.html -->
+<title>Registrar jogador</title>
 <div class="container mt-5">
   <h2>Formulário de Jogador</h2>
   <form [formGroup]="jogadorForm" (ngSubmit)="onSubmit()">
@@ -37,6 +38,10 @@
         <option>Meio-Campista Ofensivo (CAM)</option>
         <option>Meio-Campista Esquerdo (LM)</option>
         <option>Meio-Campista Direito (RM)</option>
+        <option>Segundo-Avançado (CF)</option>
+        <option>Ala Direito (RW)</option>
+        <option>Ala Esquerdo (LW)</option>
+        <option>Ponta (ST)</option>
       </select>
       <!--<div *ngIf="jogadorForm.get('posicao')?.invalid && (jogadorForm.get('posicao')?.dirty || jogadorForm.get('posicao')?.touched)" class="text-danger">
         Posição é obrigatório.

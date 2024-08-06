@@ -1,18 +1,27 @@
 <!-- app.component.html -->
+<title>Intermediações</title>
 <div class="container mt-5">
   <h2 class="text-center">Intermediações</h2>
   <div class="row p-2 m-4 justify-content-center align-items-center">
     <div class="col-lg-4">
-      <button class="btn btn-outline-info">2024</button>
-      <button class="btn btn-outline-info">2024</button>
-      <button class="btn btn-outline-info">2024</button>
-      <button class="btn btn-outline-info">2024</button>
+      <div *ngFor="let ano of listaDeAnos">
+        <button class="btn btn-outline-info">{{ano}}</button>
+      </div>
     </div>
   </div>
   <div class="row mt-5">
     <div class="col-lg-4 text-center p-2" *ngFor="let item of items">
-      <img src="assets/acao-do-jogador-de-futebol-no-estadio.jpg" alt="imagem" class="img-fluid">
-      <h3>{{ item }}</h3>
+      <div class="card">
+        <div class="card-img">
+          <img [src]="imgSrcs[item.id]" [alt]="item.jogadorTransferido" class="img-fluid">
+        </div>
+        <div class="card-header">
+          <h3>{{item.jogadorTransferido}}</h3>
+        </div>
+        <div class="card-body">
+          <h3>{{item.equipaAntiga}} » {{item.equipaNova}}</h3>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -12,8 +12,11 @@ export class IntermediacaoService {
 
   constructor(private http: HttpClient) {}
 
-  newIntermediacao(intermediacao: Intermediacao): Observable<Intermediacao> {
-    return this.http.post<Intermediacao>(`${this.baseUrl}`, intermediacao);
+  newIntermediacao(intermediacao: Intermediacao, image:File): Observable<Intermediacao> {
+    const formData: FormData = new FormData();
+    formData.append('intermediacao', new Blob([JSON.stringify(intermediacao)], {type:'application/json'}));
+    formData.append('image', image);
+    return this.http.post<Intermediacao>(`${this.baseUrl}`, formData);
   }
 
   getIntermediacao(id: number): Observable<Intermediacao> {

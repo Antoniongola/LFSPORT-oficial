@@ -31,8 +31,6 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit() {
-    alert('submit button was pressed!!')
-    this.userService.saveUsername("lfsport");
     if (this.loginForm.valid) {
       let user:Utilizador= new Utilizador(0,
         this.loginForm.get('username')?.value,
@@ -41,16 +39,15 @@ export class LoginComponent implements OnInit{
       this.userService.login(user).subscribe(response=>{
         if(response){
           this.userService.saveUsername(user.username);
-          this.route.navigate(['dashboard']);
-        }else{
-
-          this.mostrarErros();
+          this.route.navigate(['dashboard']).then(() => {
+            // Forçar um reload da página
+            window.location.reload();
+          });
         }
+      }, error=>{
+        alert('Erro, username ou password inválidos!')
       });
 
-    }else{
-      alert('Invalid form')
-      this.mostrarErros();
     }
   }
 }

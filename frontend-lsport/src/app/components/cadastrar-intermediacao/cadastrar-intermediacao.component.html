@@ -1,1 +1,37 @@
-<p>cadastrar-intermediacao works!</p>
+<!-- jogador-form.component.html -->
+<title>Fazer intermediação</title>
+<div class="container mt-5">
+  <h2>Formulário de Jogador</h2>
+  <form [formGroup]="intermediacaoForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="jogadorTransferido">Nome do jogador</label>
+      <select id="jogadorTransferido" formControlName="jogadorTransferido" class="form-control">
+        <option *ngFor="let jogador of jogadores" [value]="jogador.nome">{{jogador.nome}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="equipaAntiga">Equipa Antiga</label>
+      <input type="text" id="equipaAntiga" formControlName="equipaAntiga" class="form-control">
+      <div *ngIf="intermediacaoForm.get('equipaAntiga')?.invalid && (intermediacaoForm.get('equipaAntiga')?.dirty || intermediacaoForm.get('equipaAntiga')?.touched)" class="text-danger">
+        Equipa é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="equipaNova">Equipa Nova</label>
+      <input type="text" id="equipaNova" formControlName="equipaNova" class="form-control">
+      <div *ngIf="intermediacaoForm.get('equipaNova')?.invalid && (intermediacaoForm.get('equipaNova')?.dirty || intermediacaoForm.get('equipaNova')?.touched)" class="text-danger">
+        Equipa é obrigatório.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="anoIntermediacao">Ano da intermediação</label>
+      <input type="number" id="anoIntermediacao" formControlName="anoIntermediacao" class="form-control">
+    </div>
+    <div class="me-3">
+      <label for="intermediacaoImage">Imagem da intermediação/ do Atleta com a equipe nova</label>
+      <br>
+      <input class="form-control form-control-sm" id="intermediacaoImage" type="file" (change)="onFileChange($event)" style="width: 35%; height: 15px;">
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="intermediacaoForm.invalid">Enviar</button>
+  </form>
+</div>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TreinadorService} from "../../services/treinador/treinador.service";
+import {Treinador} from "../../entities/Treinador";
 
 @Component({
   selector: 'app-dashboard-treinadores',
@@ -7,18 +8,21 @@ import {TreinadorService} from "../../services/treinador/treinador.service";
   styleUrl: './dashboard-treinadores.component.css'
 })
 export class DashboardTreinadoresComponent implements OnInit{
-  treinadores:any[]=['Guardiola', 'Klopp', 'Mourinho', 'Tuchel', 'Ancelotti'];
+  treinadores:Treinador[]=[];
   constructor(private treinadorService:TreinadorService) {
   }
 
   ngOnInit() {
+    this.treinadorService.getAllTreinadores().subscribe(response=>{
+      this.treinadores=response;
+    });
   }
 
   editItem(item:any){
 
   }
 
-  deleteItem(item:any){
-    this.treinadorService.deleteTreinador(item);
+  deleteItem(item:Treinador){
+    this.treinadorService.deleteTreinador(item.id);
   }
 }

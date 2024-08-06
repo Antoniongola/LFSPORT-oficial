@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IntermediacaoService} from "../../services/intermediacao/intermediacao.service";
+import {Intermediacao} from "../../entities/Intermediacao";
 
 @Component({
   selector: 'app-dashboard-intermediacoes',
@@ -7,13 +8,15 @@ import {IntermediacaoService} from "../../services/intermediacao/intermediacao.s
   styleUrl: './dashboard-intermediacoes.component.css'
 })
 export class DashboardIntermediacoesComponent implements OnInit{
-  intermediacoes:any[]=['', '', '', '', ''];
+  intermediacoes:Intermediacao[]=[];
   constructor(private intermediacaoService:IntermediacaoService){
 
   }
 
   ngOnInit() {
-
+    this.intermediacaoService.getAllIntermediacoes().subscribe(response=>{
+      this.intermediacoes = response;
+    })
   }
 
   deleteItem(id:any){

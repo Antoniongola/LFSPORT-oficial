@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Jogador} from "../../entities/Jogador";
+import {JogadorService} from "../../services/jogador/jogador.service";
 
 @Component({
   selector: 'app-dashboard-jogadores',
@@ -6,20 +8,23 @@ import {Component, OnInit} from '@angular/core';
   styleUrl: './dashboard-jogadores.component.css'
 })
 export class DashboardJogadoresComponent implements OnInit{
-  jogadores:any[]=['', '', '', '', ''];
+  jogadores:Jogador[]=[];
 
-  constructor() {
+
+  constructor(private jogadorService:JogadorService) {
   }
 
   ngOnInit() {
+    this.jogadorService.getAllJogadores().subscribe(response=>{
+      this.jogadores = response;
+    });
+  }
+
+  editItem(item:Jogador){
 
   }
 
-  editItem(item:any){
-
-  }
-
-  deleteItem(item:any){
-
+  deleteItem(item:Jogador){
+    this.jogadorService.deleteJogador(item.id);
   }
 }

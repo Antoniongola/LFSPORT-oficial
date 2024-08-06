@@ -1,3 +1,4 @@
+<title>Intermediações|Administrador</title>
 <div class="container mt-5">
   <div class="col">
     <h2>Lista de Intermediações</h2>
@@ -5,13 +6,13 @@
   </div>
   <ul class="list-group">
     <li *ngFor="let item of intermediacoes" class="list-group-item d-flex justify-content-between align-items-center">
-      O jogador {{ item.name }} foi saiu da equipa "{{ item.equipaAntiga }}" para a equipa "{{ item.equipaNova }}"
+      O jogador {{ item.jogadorTransferido }} saiu da equipa "{{ item.equipaAntiga }}" para a equipa "{{ item.equipaNova }}"
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
         Ações
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="" [routerLink]="['/'+'dashboard/edit/intermediacao/'+item.id]">Editar</a></li>
-        <li><a class="dropdown-item" href="" (click)="deleteItem(item.id)">Apagar</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/'+'dashboard/edit/intermediacao/'+item.id]">Editar</a></li>
+        <li><a class="dropdown-item" (click)="deleteItem(item.id)">Apagar</a></li>
       </ul>
     </li>
   </ul>
