@@ -28,6 +28,9 @@ import { DashboardTreinadoresComponent } from './components/dashboard-treinadore
 import { DashboardIntermediacoesComponent } from './components/dashboard-intermediacoes/dashboard-intermediacoes.component';
 import { TreinadorDetalhadoComponent } from './components/treinador-detalhado/treinador-detalhado.component';
 import { TreinadorComponent } from './components/treinador/treinador.component';
+import { EditTreinadorComponent } from './components/edit-treinador/edit-treinador.component';
+import { EditJogadorComponent } from './components/edit-jogador/edit-jogador.component';
+import { EditIntermediacaoComponent } from './components/edit-intermediacao/edit-intermediacao.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { TreinadorComponent } from './components/treinador/treinador.component';
     DashboardTreinadoresComponent,
     DashboardIntermediacoesComponent,
     TreinadorDetalhadoComponent,
-    TreinadorComponent
+    TreinadorComponent,
+    EditTreinadorComponent,
+    EditJogadorComponent,
+    EditIntermediacaoComponent
   ],
   imports: [
     BrowserModule,

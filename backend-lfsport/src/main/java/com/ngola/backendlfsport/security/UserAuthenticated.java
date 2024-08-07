@@ -1,7 +1,6 @@
 package com.ngola.backendlfsport.security;
 
-import com.ngola.backendlfsport.entities.Utilizador;
-import lombok.RequiredArgsConstructor;
+import com.ngola.backendlfsport.entity.Utilizador;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Treinador} from "../../entities/Treinador";
+import {Treinador} from "../../entity/Treinador";
 import {TreinadorService} from "../../services/treinador/treinador.service";
 import {MediaService} from "../../services/media/media.service";
 import {ActivatedRoute} from "@angular/router";

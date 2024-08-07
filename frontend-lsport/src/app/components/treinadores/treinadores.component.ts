@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UtilizadorService} from "../../services/utilizador/utilizador.service";
 import {Router} from "@angular/router";
-import {Treinador} from "../../entities/Treinador";
+import {Treinador} from "../../entity/Treinador";
 import {TreinadorService} from "../../services/treinador/treinador.service";
 import {MediaService} from "../../services/media/media.service";
 import {DomSanitizer} from "@angular/platform-browser";

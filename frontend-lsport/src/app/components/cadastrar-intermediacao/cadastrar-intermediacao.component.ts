@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {IntermediacaoService} from "../../services/intermediacao/intermediacao.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {JogadorService} from "../../services/jogador/jogador.service";
-import {Jogador} from "../../entities/Jogador";
-import {Intermediacao} from "../../entities/Intermediacao";
+import {Jogador} from "../../entity/Jogador";
+import {Intermediacao} from "../../entity/Intermediacao";
 
 @Component({
   selector: 'app-cadastrar-intermediacao',

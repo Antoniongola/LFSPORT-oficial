@@ -11,7 +11,7 @@
         Ações
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" [routerLink]="['/'+'dashboard/edit/intermediacao/'+item.id]">Editar</a></li>
+        <li><a class="dropdown-item" (click)="editItem(item.id)">Editar</a></li>
         <li><a class="dropdown-item" (click)="deleteItem(item.id)">Apagar</a></li>
       </ul>
     </li>

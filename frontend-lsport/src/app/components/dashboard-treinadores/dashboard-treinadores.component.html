@@ -11,8 +11,8 @@
         Ações
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="#" (click)="editItem(item)">Editar</a></li>
-        <li><a class="dropdown-item" href="#" (click)="deleteItem(item)">Apagar</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/'+'dashboard/edit/treinador/'+item.id]">Editar</a></li>
+        <li><a class="dropdown-item" (click)="deleteItem(item)">Apagar</a></li>
       </ul>
     </li>
   </ul>

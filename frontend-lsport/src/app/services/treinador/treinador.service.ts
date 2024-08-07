@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Treinador} from "../../entities/Treinador";
+import {Treinador} from "../../entity/Treinador";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environments} from "../../../environments/environments";
@@ -27,8 +27,11 @@ export class TreinadorService {
     return this.http.get<Treinador[]>(`${this.baseUrl}`);
   }
 
-  updateTreinador(treinador: Treinador, id: number): Observable<Treinador> {
-    return this.http.put<Treinador>(`${this.baseUrl}/${id}`, treinador);
+  updateTreinador(treinador: Treinador, id: number, image:File): Observable<Treinador> {
+    const formData: FormData = new FormData();
+    formData.append('treinador', new Blob([JSON.stringify(treinador)], {type:'application/json'}));
+    formData.append('image', image);
+    return this.http.put<Treinador>(`${this.baseUrl}/${id}`, formData);
   }
 
   deleteTreinador(id: number): Observable<void> {

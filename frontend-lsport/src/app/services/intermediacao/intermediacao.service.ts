@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Intermediacao} from "../../entities/Intermediacao";
+import {Intermediacao} from "../../entity/Intermediacao";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environments} from "../../../environments/environments";
@@ -31,8 +31,11 @@ export class IntermediacaoService {
     return this.http.get<Intermediacao[]>(`${this.baseUrl}/jogador/${id}`);
   }
 
-  updateIntermediacao(intermediacao: Intermediacao, id: number): Observable<Intermediacao> {
-    return this.http.put<Intermediacao>(`${this.baseUrl}/${id}`, intermediacao);
+  updateIntermediacao(intermediacao: Intermediacao, id: number, image:File): Observable<Intermediacao> {
+    const formData: FormData = new FormData();
+    formData.append('intermediacao', new Blob([JSON.stringify(intermediacao)], {type:'application/json'}));
+    formData.append('image', image);
+    return this.http.put<Intermediacao>(`${this.baseUrl}/${id}`, formData);
   }
 
   deleteIntermediacao(id: number): Observable<void> {

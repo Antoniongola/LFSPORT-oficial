@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UtilizadorService} from "../../services/utilizador/utilizador.service";
 import {Router} from "@angular/router";
-import {Intermediacao} from "../../entities/Intermediacao";
+import {Intermediacao} from "../../entity/Intermediacao";
 import {IntermediacaoService} from "../../services/intermediacao/intermediacao.service";
 import {MediaService} from "../../services/media/media.service";
 import {DomSanitizer} from "@angular/platform-browser";

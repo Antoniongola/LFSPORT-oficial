@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TreinadorService} from "../../services/treinador/treinador.service";
-import {Treinador} from "../../entities/Treinador";
+import {Treinador} from "../../entity/Treinador";
 
 @Component({
   selector: 'app-dashboard-treinadores',
@@ -18,13 +18,9 @@ export class DashboardTreinadoresComponent implements OnInit{
     });
   }
 
-  editItem(item:any){
-
-  }
-
   deleteItem(item:Treinador){
     this.treinadorService.deleteTreinador(item.id).subscribe(response=>{
-      alert('TREINADOR APAGADO COM SUCESSO!')
+      alert('TREINADOR APAGADO COM SUCESSO!');
       window.location.reload();
     });
   }

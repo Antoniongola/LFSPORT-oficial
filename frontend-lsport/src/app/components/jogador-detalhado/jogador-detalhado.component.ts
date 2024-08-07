@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {JogadorService} from "../../services/jogador/jogador.service";
 import {MediaService} from "../../services/media/media.service";
 import {ActivatedRoute} from "@angular/router";
-import {Jogador} from "../../entities/Jogador";
+import {Jogador} from "../../entity/Jogador";
 import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({

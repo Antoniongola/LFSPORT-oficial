@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IntermediacaoService} from "../../services/intermediacao/intermediacao.service";
-import {Intermediacao} from "../../entities/Intermediacao";
+import {Intermediacao} from "../../entity/Intermediacao";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard-intermediacoes',
@@ -9,7 +10,8 @@ import {Intermediacao} from "../../entities/Intermediacao";
 })
 export class DashboardIntermediacoesComponent implements OnInit{
   intermediacoes:Intermediacao[]=[];
-  constructor(private intermediacaoService:IntermediacaoService){
+  constructor(private intermediacaoService:IntermediacaoService,
+              private route:Router){
 
   }
 
@@ -17,6 +19,10 @@ export class DashboardIntermediacoesComponent implements OnInit{
     this.intermediacaoService.getAllIntermediacoes().subscribe(response=>{
       this.intermediacoes = response;
     })
+  }
+
+  editItem(item:any){
+    this.route.navigate(['/'+'dashboard/edit/intermediacao/'+item.id]);
   }
 
   deleteItem(id:any){

@@ -1,9 +1,8 @@
 package com.ngola.backendlfsport.security.admin;
 
-import com.ngola.backendlfsport.entities.FileManager;
-import com.ngola.backendlfsport.entities.Utilizador;
-import com.ngola.backendlfsport.repositories.UtilizadorRepository;
-import com.ngola.backendlfsport.security.SecurityConfigs;
+import com.ngola.backendlfsport.entity.FileManager;
+import com.ngola.backendlfsport.entity.Utilizador;
+import com.ngola.backendlfsport.repository.UtilizadorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

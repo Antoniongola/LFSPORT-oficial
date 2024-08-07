@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {JogadorService} from "../../services/jogador/jogador.service";
-import {Jogador} from "../../entities/Jogador";
+import {Jogador} from "../../entity/Jogador";
 
 @Component({
   selector: 'app-cadastrar-jogador',

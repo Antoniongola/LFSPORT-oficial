@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {JogadorService} from "../../services/jogador/jogador.service";
-import {Jogador} from "../../entities/Jogador";
+import {Jogador} from "../../entity/Jogador";
 import {MediaService} from "../../services/media/media.service";
 import {DomSanitizer} from "@angular/platform-browser";
 
