@@ -1,0 +1,1 @@
+Repository containing the web application for the angolan football company "LFSPORT LDA - GESTÃO DESPORTIVA". This branch has two modules, the angular front-end version and the spring boot back-end version.
